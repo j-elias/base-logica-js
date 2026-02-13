@@ -134,3 +134,54 @@ class Pilha {
         return this.length; 
     }
 }
+
+
+const p = new Pilha();
+p.push(10);
+p.push(20);
+console.log(p.pop()); // 20
+console.log(p.peek()); // 10
+
+class Fila {
+    constructor() {
+        this.itens = {};
+        this.inicio = 0;
+        this.fim = 0;
+        this.length = 0;
+    }
+
+    enqueue(valor) {
+        this.itens[this.fim] = valor;
+        this.fim++;
+        this.length++;
+    }
+
+    dequeue() {
+        if (this.isEmpty()) {
+            throw new Error("Fila vazia");
+        }
+        let valor = this.itens[this.inicio];
+        delete this.itens[this.inicio];
+        this.inicio++;
+        this.length--;
+        return valor;
+    }
+    peek() {
+        if (this.size() > 0) {
+            return this.itens[this.inicio];
+        }
+        return 'Fila vazia';
+    }
+    isEmpty() {
+        return this.length === 0;
+    }
+    size() {
+        return this.length;
+    }
+}
+
+const f = new Fila();
+f.enqueue(10);
+f.enqueue(20);
+console.log(f.dequeue()); // 10
+console.log(f.peek()); // 20
