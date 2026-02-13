@@ -92,4 +92,45 @@ function busca_binaria(array, valor) {
     return -1;
 }
 console.log(busca_binaria([1, 2, 3, 4, 5], 3));
-    
+
+
+class Pilha {
+    constructor() {
+        this.itens = [];
+        this.length = 0;
+    }
+
+    push(valor) {
+        // adicionar no topo
+        this.itens[this.length] = valor;
+        this.length++;
+    }
+
+    pop() {
+        if (this.isEmpty()) {
+            throw new Error("Pilha vazia");
+        }
+        this.length--;
+        const valor = this.itens[this.length];
+        delete this.itens[this.length]; // limpa referência
+        return valor;
+    }
+
+    peek() {
+        // ver topo sem remover
+        if (this.size() > 0) {
+            return this.itens[this.length - 1];
+        }
+        return 'Pilha vazia';
+    }
+
+    isEmpty() {
+        // retorna true se vazia
+        return this.length === 0;
+    }
+
+    size() {
+        // retorna tamanho
+        return this.length; 
+    }
+}
